@@ -1,0 +1,115 @@
+<apex:page id="page" lightningStylesheets="true" controller="ProductTableVisualforcePageController">
+    <apex:slds />
+    <apex:form id="form">
+        <apex:pageBlock title="Product List" id="productTables_list">
+            <apex:pageBlockTable value="{! productTables}" var="pt" id="pageBlockTable" >
+                <!-- Picture & title column-->
+                <apex:column width="30%">
+					<apex:facet name="header">
+                        <apex:commandLink action="{! sortByName}" reRender="productTables_list" >
+                            <apex:outputText value="Image"/>
+                        </apex:commandLink>                        
+                    </apex:facet>                    
+                	<div class="demo-only slds-size_3-of-4">
+						<div class="slds-media slds-media_center">
+							<div class="slds-media__figure">								
+                                    <apex:image url="{! pt.Image_Uri__c}" height="250" width="150" />								
+							</div>
+							<div class="slds-media__body">
+                                <p class="slds-page-header--small slds-m-left_x-large">
+                                    <apex:outputLink value="{!URLFOR($Page.DetailedProductDescription, null, [id=pt.Id])}" target="_blank">{! pt.Name}</apex:outputLink>
+                                </p>
+							</div>
+						</div>
+					</div>
+                </apex:column>
+                
+                <!-- Description column-->                
+                <apex:column headerValue="Description" width="40%" id="column" >                    
+                	<apex:outputText value="{! IF(LEN(pt.Product_Description__c) > 200, LEFT(pt.Product_Description__c, 197) + '...', pt.Product_Description__c)}" id="pt_description"/>
+                    <apex:commandLink value="More" onclick="return ChangeDescription();" reRender="productTables_list" />
+                </apex:column>
+                
+                <!-- Date column-->
+                <apex:column width="10%">
+                	<apex:facet name="header">
+                        <apex:commandLink action="{! sortByAddedDate}" reRender="productTables_list" >
+                            <div class="slds-align_absolute-center">
+                            	<apex:outputText value="Added Date"/>
+                            </div>
+                        </apex:commandLink>                        
+                    </apex:facet>
+                    <div class="slds-align_absolute-center">
+                        <apex:outputText value="{0,date,dd/MM/yy}">
+                            <apex:param value="{! pt.Added_Date__c}"/>
+                        </apex:outputText>
+                    </div>
+                </apex:column>
+                
+                <!-- Units available column-->
+                <apex:column width="5%">
+                    <apex:facet name="header">
+                        <apex:commandLink action="{! sortByUnitsAvailable}" reRender="productTables_list" >
+                            <div class="slds-align_absolute-center">
+                            	<apex:outputText value="Units Available"/>
+                            </div>
+                        </apex:commandLink>                        
+                    </apex:facet>
+                    <div class="slds-align_absolute-center">
+                        <apex:outputText value="{! pt.Units_Available__c}"/>
+                    </div>
+                </apex:column>
+                
+                <!-- Unit price column-->
+                <apex:column width="5%" >
+                	<apex:facet name="header">
+                        <apex:commandLink action="{! sortByUnitPrice}" reRender="productTables_list" >
+                            <div class="slds-align_absolute-center">
+                            	<apex:outputText value="Cost"/>
+                            </div>
+                        </apex:commandLink>                        
+                    </apex:facet>
+                    <div class="slds-align_absolute-center">
+                        <apex:outputText value="{! pt.Unit_Price__c}"/>
+                    </div>
+                </apex:column>
+                
+                <!-- Button column-->
+                <apex:column width="5%" >
+                    <div class="slds-align_absolute-center">
+                        <button class="slds-button slds-button_brand">
+                            <apex:outputLink value="{!URLFOR($Page.PurchaseProductVisualforcePage, null, [id=pt.Id])}" target="_blank">Buy</apex:outputLink>
+                        </button>
+                    </div>                    
+                </apex:column>
+            </apex:pageBlockTable>
+            
+            <!-- Pagination -->
+            <div style="height: 200px;" class="slds-align_absolute-center">
+  				<span class="slds-badge">
+                	<!-- First page -->
+                    <apex:commandLink action="{! First }" value="First"/>                    
+                </span>
+    			<span class="slds-badge">
+                	<!-- Previous page -->
+                	<!-- active -->
+                    <apex:commandLink action="{! Previous }" value="<< Previous" rendered="{! hasPrevious }" />
+                    <!-- inactive (no earlier pages) -->
+                    <apex:outputText style="color: #ccc;" value="<< Previous" rendered="{! NOT(hasPrevious) }" />                    
+                </span>
+                <span class="slds-badge">
+                	<!-- Next page -->
+                	<!-- active -->
+                    <apex:commandLink action="{! Next }" value="Next >>" rendered="{! hasNext }" />
+                    <!-- inactive (no more pages) -->
+                    <apex:outputText style="color: #ccc;" value="Next >>" rendered="{! NOT(hasNext) }" />                   
+                </span>
+                <span class="slds-badge">
+                    <!-- Last page -->
+                    <apex:commandLink action="{! Last }" value="Last"/>                    
+                </span>                 
+			</div> 
+            
+        </apex:pageBlock>
+    </apex:form>    
+</apex:page>

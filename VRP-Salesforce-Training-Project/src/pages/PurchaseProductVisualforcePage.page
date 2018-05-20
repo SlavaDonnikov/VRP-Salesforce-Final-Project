@@ -1,0 +1,173 @@
+<apex:page lightningStylesheets="true" controller="ProductDescriptionAndPurchaseController"> 
+	<apex:slds />
+    <apex:pageMessages />
+    <apex:form >
+    <div class="slds-scope">
+        
+        <!-- PAGE HEADER (done) -->
+		<div class="slds-page-header">
+            <div class="slds-media">
+                <div class="slds-media__body">
+                    <div class=" slds-grid ">
+            			<div class="slds-size_1-of-2">
+    						<div class="slds-text-align_center">
+                				<h1 class="slds-page-header__title slds-text-align_center">Contact Information</h1>												
+                			</div>
+  						</div>
+            			<div class="slds-size_1-of-2">
+    						<div class="slds-text-align_center">
+                				<h1 class="slds-page-header__title slds-text-align_center">Product Information</h1>														
+                			</div>
+  						</div>
+        			</div>                    
+                </div>
+            </div>
+        </div>
+        <!--/ PAGE HEADER -->
+        
+        <!-- SECTION 1-->        
+        <div class="demo-only demo-only--sizing slds-grid ">
+            
+            <!-- Left Half -->
+            <div class="slds-size_1-of-2 slds-m-top_medium">                
+    			<div class="slds-text-align_center slds-m-around_x-small">
+                    
+                	<div class="slds-grid slds-grid_vertical ">                        
+                        <div class="slds-grid">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_x-small slds-m-top_xx-small">
+                                    <apex:outputText value="Email"/><abbr class="slds-required">*</abbr>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <apex:inputText value="{! Email }" />														
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_x-small slds-m-top_xx-small">
+                                    <apex:outputText value="First Name"/><abbr class="slds-required">*</abbr>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <apex:inputText value="{! FirstName }" />														
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_x-small slds-m-top_xx-small">
+                                    <apex:outputText value="Last Name"/><abbr class="slds-required">*</abbr>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <apex:inputText value="{! LastName }" />														
+                                </div>
+                            </div>
+                        </div>                	
+                	</div>
+                    
+                </div>                
+  			</div>
+            
+            <!-- Right Half -->
+            <div class="slds-size_1-of-2 slds-m-top_medium">
+    			<div class="slds-text-align_center slds-m-around_x-small">
+                	
+                    <div class="slds-grid slds-grid_vertical ">
+                        <div class="slds-grid">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_small slds-m-top_xx-small">
+                                    <apex:outputText value="Product Name"/>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left slds-m-bottom_xx-small">
+                                    <apex:outputText value="{! productTable.Name}" style="font-weight: bold; font-size: 12pt"/>														
+                                </div>
+                            </div>
+                        </div>                    
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_small ">
+                                    <apex:outputText value="Cost"/>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <apex:outputText value="{! productTable.Unit_Price__c}"/><apex:outputText value=" $"/> 														
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_small ">
+                                    <apex:outputText value="Unit Count"/>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <!-- onkeydown запрещает обновлять страницу при нажатии Enter, onchange="changeTotalAmount();" изменяет Total Amount при вводе кол-ва в Unit Count -->
+                                    <!-- onchange="changeTotalAmount();" для скрипта ограничивающего ввод -->
+                                    <apex:inputText value="{! UnitCount}" onchange="totalAmount();" id="unitsCountSelected" onkeydown="if(event.keyCode==13){this.blur();actionFunction();}" />
+                                    &nbsp;/&nbsp;<apex:outputField value="{! productTable.Units_Available__c}" id="totatUnitsCountAvailable"/>													
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-grid slds-m-top_small">
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_right slds-m-right_small ">
+                                    <apex:outputText value="Total Amount"/>												
+                                </div>
+                            </div>
+                            <div class="slds-size_1-of-2">
+                                <div class="slds-text-align_left">
+                                    <!-- value="{! TotalAmount}" -->
+                                    <apex:outputText id="TotalSum"/><apex:outputText value=" $"/> 														
+                                </div>
+                            </div>
+                        </div>
+                        
+						<script>
+                        	// Ф-я для ограничения ввода пользователем кол-ва товара, превышающее имеющееся на складе кол-во товара
+            				function changeTotalAmount() {             				
+              					var a = document.getElementById("{!$Component.unitsCountSelected}").value;
+								
+                                // Проверка чтобы кол-во введенное пользователем не превышала максимально доступное                                
+                                if(a > {! productTable.Units_Available__c} ) {
+                                    a = {! productTable.Units_Available__c};
+									document.getElementById("{!$Component.unitsCountSelected}").value = a;                                   
+                                }
+                                document.getElementById("{!$Component.TotalSum}").innerHTML = a * {! productTable.Unit_Price__c};
+            				}
+                        
+                        	function totalAmount() {             				
+              					var a = document.getElementById("{!$Component.unitsCountSelected}").value;
+                                document.getElementById("{!$Component.TotalSum}").innerHTML = a * {! productTable.Unit_Price__c};
+            				}
+           				</script>					
+                	</div>
+                    
+                </div>
+  			</div>
+        </div>
+        <!--/ SECTION 1-->
+        
+        <!-- FOOTER (done) -->
+        <div style="height: 180px;">
+        	<div class="slds-docked-form-footer">
+				<button class="slds-button slds-button_neutral" >
+                    <apex:outputLink value="{!URLFOR($Page.DetailedProductDescription, null, [id=PreviousPageId])}" target="_top">To Product Description</apex:outputLink>
+                </button>
+    			<button class="slds-button slds-button_brand" ><apex:commandLink action="{! buy}" value="Buy" /></button>				                
+  			</div>
+		</div>
+        <!-- / FOOTER -->
+        
+    </div>
+    </apex:form>
+</apex:page>
