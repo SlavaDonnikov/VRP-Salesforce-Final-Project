@@ -1,0 +1,40 @@
+@isTest
+public class Test_Helper {
+	@isTest public static List<Product_Item__c> getProductList() {
+       return new List<Product_Item__c> {	new Product_Item__c(Name = 'Meizu MX4', Amount__c = 50, Price__c = 190.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/01/2018'), Added_Date__c = date.parse('05/05/2018')), 
+    										new Product_Item__c(Name = 'Meizu MX4 Pro', Amount__c = 100, Price__c = 220.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/07/2018'), Added_Date__c = date.parse('05/10/2018')),
+           									new Product_Item__c(Name = 'Meizu MX6', Amount__c = 90, Price__c = 235.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/11/2018'), Added_Date__c = date.parse('05/12/2018')),
+                                            new Product_Item__c(Name = 'Meizu M2', Amount__c = 135, Price__c = 112.99, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/03/2018'), Added_Date__c = date.parse('02/10/2018')),
+                                            new Product_Item__c(Name = 'Meizu M3', Amount__c = 77, Price__c = 148.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/01/2018'), Added_Date__c = date.parse('04/07/2018')),
+                                            new Product_Item__c(Name = 'Meizu M5s', Amount__c = 233, Price__c = 151.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/11/2018'), Added_Date__c = date.parse('02/18/2018')),
+                                            new Product_Item__c(Name = 'Meizu M6s', Amount__c = 111, Price__c = 160.99, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/17/2018'), Added_Date__c = date.parse('04/22/2018')),           
+                                            new Product_Item__c(Name = 'Meizu E2', Amount__c = 250, Price__c = 240.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('03/12/2018'), Added_Date__c = date.parse('03/15/2018')),
+                                            new Product_Item__c(Name = 'Meizu Pro 6 Plus', Amount__c = 500, Price__c = 440.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/19/2018'), Added_Date__c = date.parse('04/29/2018')),
+                                            new Product_Item__c(Name = 'Meizu Pro 6', Amount__c = 600, Price__c = 299.99, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/04/2018'), Added_Date__c = date.parse('05/22/2018')),
+                                            new Product_Item__c(Name = 'Meizu Pro 7', Amount__c = 450, Price__c = 433.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/28/2018'), Added_Date__c = date.parse('05/01/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Redmi 3', Amount__c = 118, Price__c = 116.50, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/13/2018'), Added_Date__c = date.parse('04/19/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Redmi Note 4X', Amount__c = 97, Price__c = 135.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('03/16/2018'), Added_Date__c = date.parse('03/23/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Redmi 5', Amount__c = 27, Price__c = 88.99, Type__c = 'Mobile Phone', Release_Date__c = date.parse('02/01/2018'), Added_Date__c = date.parse('02/12/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi A1', Amount__c = 144, Price__c = 195.34, Type__c = 'Mobile Phone', Release_Date__c = date.parse('01/11/2018'), Added_Date__c = date.parse('01/15/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi Max2', Amount__c = 720, Price__c = 531.90, Type__c = 'Mobile Phone', Release_Date__c = date.parse('01/14/2018'), Added_Date__c = date.parse('01/24/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi 5s', Amount__c = 589, Price__c = 286.99, Type__c = 'Mobile Phone', Release_Date__c = date.parse('02/09/2018'), Added_Date__c = date.parse('02/13/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi 6X', Amount__c = 890, Price__c = 689.00, Type__c = 'Mobile Phone', Release_Date__c = date.parse('04/08/2018'), Added_Date__c = date.parse('04/21/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi Mix', Amount__c = 541, Price__c = 489.90, Type__c = 'Mobile Phone', Release_Date__c = date.parse('05/11/2018'), Added_Date__c = date.parse('05/25/2018')),
+                                            new Product_Item__c(Name = 'Xiaomi Mi Pad 3', Amount__c = 174, Price__c = 329.00, Type__c = 'Tablet', Release_Date__c = date.parse('01/14/2018'), Added_Date__c = date.parse('01/21/2018')),           
+                                            new Product_Item__c(Name = 'Lenovo P8', Amount__c = 616, Price__c = 228.98, Type__c = 'Tablet', Release_Date__c = date.parse('03/03/2018'), Added_Date__c = date.parse('03/08/2018')),
+                                            new Product_Item__c(Name = 'Lenovo Tab4', Amount__c = 311, Price__c = 241.99, Type__c = 'Tablet', Release_Date__c = date.parse('03/27/2018'), Added_Date__c = date.parse('03/28/2018')),
+                                            new Product_Item__c(Name = 'Lenovo Tab3', Amount__c = 519, Price__c = 136.99, Type__c = 'Tablet', Release_Date__c = date.parse('02/22/2018'), Added_Date__c = date.parse('02/24/2018')),
+                                            new Product_Item__c(Name = 'Acer A315-31-C9ZN', Amount__c = 498, Price__c = 495.66, Type__c = 'Laptop', Release_Date__c = date.parse('01/16/2018'), Added_Date__c = date.parse('01/27/2018')),
+                                            new Product_Item__c(Name = 'Acer SF315-51G-513S', Amount__c = 911, Price__c = 969.36, Type__c = 'Laptop', Release_Date__c = date.parse('05/15/2018'), Added_Date__c = date.parse('05/25/2018')),
+                                            new Product_Item__c(Name = 'Acer ES1-531-C7TF', Amount__c = 1200, Price__c = 380.79, Type__c = 'Laptop', Release_Date__c = date.parse('04/23/2018'), Added_Date__c = date.parse('04/27/2018')),
+                                            new Product_Item__c(Name = 'Acer VX5-591G-58AX', Amount__c = 881, Price__c = 917.69, Type__c = 'Laptop', Release_Date__c = date.parse('02/19/2018'), Added_Date__c = date.parse('02/24/2018')),
+                                            new Product_Item__c(Name = 'ASUS F540UP7200', Amount__c = 290, Price__c = 1133.33, Type__c = 'Laptop', Release_Date__c = date.parse('03/18/2018'), Added_Date__c = date.parse('03/29/2018')),
+                                            new Product_Item__c(Name = 'ASUS F541UJ7200', Amount__c = 30, Price__c = 776.58, Type__c = 'Laptop', Release_Date__c = date.parse('05/02/2018'), Added_Date__c = date.parse('05/13/2018')),
+           									new Product_Item__c(Name = 'Xiaomi Mi Notebook Pro', Amount__c = 110, Price__c = 1099.00, Type__c = 'Laptop', Release_Date__c = date.parse('05/01/2018'), Added_Date__c = date.parse('05/11/2018')),
+           									new Product_Item__c(Name = 'Apple MacBook Air 15', Amount__c = 339, Price__c = 909.99, Type__c = 'Laptop', Release_Date__c = date.parse('05/06/2018'), Added_Date__c = date.parse('05/18/2018')),
+           									new Product_Item__c(Name = 'Apple Macbook Pro 15 ', Amount__c = 12, Price__c = 2999.99, Type__c = 'Laptop', Release_Date__c = date.parse('05/07/2018'), Added_Date__c = date.parse('05/17/2018')),
+           									new Product_Item__c(Name = 'MSI GL62M 7REX-1252CN', Amount__c = 55, Price__c = 1151.49, Type__c = 'Laptop', Release_Date__c = date.parse('05/17/2018'), Added_Date__c = date.parse('05/21/2018')),
+           									new Product_Item__c(Name = 'Thunderobot 911GT-Y6', Amount__c = 10, Price__c = 3193.33, Type__c = 'Laptop', Release_Date__c = date.parse('05/19/2018'), Added_Date__c = date.parse('05/22/2018'))};
+		    
+    }
+}
